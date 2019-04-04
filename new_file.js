@@ -28,9 +28,9 @@ function YunSuoAutoJump(){
 
        var height=1080;
 
-       var screendate = width + "," + height;
+       // var screendate = width + "," + height;
 	   
-	   console.log(screendate);
+	   // console.log(screendate);
 
        // var curlocation = window.location.href;
 
@@ -40,7 +40,7 @@ function YunSuoAutoJump(){
 // 
 //        }
 
-       location = "/default.aspx?tabid=263&ComName=default&security_verify_data=" + stringToHex(screendate);
+       location = "/default.aspx?tabid=263&ComName=default&security_verify_data=" + stringToHex("1");
 	   
 	   console.log(location);
 
