@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>datetime</title>
+		<style type="text/css">
+			button{
+				width: 210px;
+				margin: 200px auto;
+				color: red;
+				text-align: center;
+				font: 600 30px/30px "simsun";
+			}
+		</style>
+	</head>
+	<body>
+		<button type="button">click</button>
+		<script type="text/javascript">
+			var btn = document.getElementsByTagName("button")[0];
+// 			btn.onclick = function(){
+// 				alert('first');
+// 			}
+// 			btn.onclick = function(){
+// 				alert('second');
+// 			}
+btn.addEventListener('click',fn1);
+btn.addEventListener('click',fn2);
+function fn1(){
+	alert('1');
+}
+function fn2(){
+	alert('2');
+}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>vue test</title>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	</head>
+	<style>
+		.class1{
+			background: #FF0000;
+			color: blue;
+		}
+	</style>
+	<body>
+		<div id="app">
+			<!-- 文本 -->
+			<p>{{data1}}</p>
+			<!-- html -->
+			<p v-html="data2"></p>
+			<!-- 属性 -->
+			<label for="r1">change color</label><input type="checkbox" v-model="data3" id="r1">
+			<br><br>
+			<div v-bind:class="{'class1':data3}">v-bind 属性</div>
+			<!--  v-属性，指令 -->
+			<p v-if="data4">this is test words</p>
+			<!-- 指令后面的参数 v-bind:href -->
+			<a v-bind:href="data5">v-bind将href关联到data5</a>
+			<br><br>
+			<!-- 输入 -->
+			<input type="text" v-model="data6"/>
+			<!-- 事件 -->
+			<p>{{message}}</p>
+			<button type="button" v-on:click="reverseData">翻转</button>
+			
+		</div>
+		<script>
+			var vm = new Vue({
+				el:'#app',
+				data:{
+					data1:'programm',
+					data2:'<h1>hello</h1>',
+					data3:false,
+					data4:true,
+					data5:'www.baidu.com',
+					data6:'hello',
+					message:'1234567'
+				},
+				methods:{
+					reverseData:function(){
+						this.message = this.message.split('').reverse().join('')
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
