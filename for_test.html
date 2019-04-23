@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>循环语句</title>
+		<script src="https://unpkg.com/vue/dist/vue.js">
+		</script>
+	</head>
+	<body>
+		<div id="app">
+			<ol>
+				<!-- v-for 可用在元素 也可用在模板 -->
+				<li v-for="site in sites">
+					{{site.name}}
+				</li>
+			</ol>
+			<template v-for="site in sites">
+				<p>{{site.name}}</p>
+				<p>-------</p>
+			</template>
+			<!-- v-for 遍历对象 v-for可以带参数-->
+			<ul>
+				<!-- 第一个参数 value 属性值 -->
+				<li v-for="value in object">
+					{{value}}
+				</li>
+			</ul>
+			<hr >
+			<ul>
+				<!-- 第二个参数 key 属性名;第三个 index 索引-->
+				<li v-for="(value,key,index) in object">
+					{{index}}:{{key}}:{{value}}
+				</li>
+			</ul>
+			
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:'#app',
+				data:{
+					sites:[{"name":"sam"},{"name":"bill"}],
+					// 对象object
+					object:{
+						name:'sam',
+						age:19,
+						height:188
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

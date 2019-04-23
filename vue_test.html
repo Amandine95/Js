@@ -26,12 +26,15 @@
 			<!-- 指令后面的参数 v-bind:href -->
 			<a v-bind:href="data5">v-bind将href关联到data5</a>
 			<br><br>
-			<!-- 输入 -->
+			<!-- 输入 数据双向绑定 -->
 			<input type="text" v-model="data6"/>
 			<!-- 事件 -->
 			<p>{{message}}</p>
 			<button type="button" v-on:click="reverseData">翻转</button>
-			
+			<!-- 过滤器1 管道符 |-->
+			<p>{{data7 | capitalize}}</p>
+			<!-- 过滤器2 v-bind 指令-->
+			<p v-bind:id="rawId | formatId"></p>
 		</div>
 		<script>
 			var vm = new Vue({
@@ -43,11 +46,20 @@
 					data4:true,
 					data5:'www.baidu.com',
 					data6:'hello',
+					data7:'abcd',
 					message:'1234567'
 				},
 				methods:{
 					reverseData:function(){
 						this.message = this.message.split('').reverse().join('')
+					}
+				},
+				filters:{
+					capitalize:function(value){
+						if(!value) return ''
+						value = value.toString()
+						// 将字符串首字母大写      slice 切片
+						return value.charAt(0).toUpperCase() + value.slice(1)
 					}
 				}
 			})

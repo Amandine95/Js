@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>条件语句</title>
+		<script src="https://unpkg.com/vue/dist/vue.js">
+		</script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 条件语句 -->
+			<p v-if="ok">ok===true插入p</p>
+			<!-- v-else必须跟在v-if或者v-else-if后面 -->
+			<p v-else >ok===false不插入</p>
+			<template v-if="seen">
+				多个元素可以放在template标签里
+				<h1>hello</h1>
+				<h2>hello</h2>
+			</template>
+			<!-- 元素的复用 input没有变 渲染时不会重新加载 只是修改了placeholder属性 输入的内容也不变-->
+			<template v-if="LoginType === 'username'">
+				<label>Username</label>
+				<input placeholder="enter username" />
+			</template>
+			<template v-else >
+				<label>Email</label>
+				<input placeholder="enter email" />
+			</template>
+			<button type="button" @click="toggle">Toggle login type</button>
+			<hr >
+			<!-- 用 key 来控制元素的复用 用唯一的key标记元素来说明 元素不同 不再复用 -->
+			<template v-if="Login === 'username'">
+				<label>Username</label>
+				<input placeholder="enter useranme" key="usrename-input" />
+			</template>
+			<template v-else >
+				<label>Email</label>
+				<input placeholder="enter email" key="email-input" />
+			</template>
+			<button type="button" @click="toggle2">Toggle</button>
+			<hr >
+			<!-- v-show控制元素的展示 -->
+			<p><h2 v-show="yes">v-show</h2></p>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:'#app',
+				data:{
+					ok:false,
+					seen:true,
+					LoginType:'username',
+					Login:'usrename',
+					yes:true
+				},
+				methods:{
+					toggle:function(){
+						if(this.LoginType==='username'){
+							this.LoginType = 'email';
+						}
+						else{
+							this.LoginType = 'username';
+						}
+					},
+					toggle2:function(){
+						if(this.Login==='username'){
+							this.Login = 'email';
+						}
+						else{
+							this.Login = 'username';
+						}
+					}
+					
+				}
+				
+			})
+		</script>
+	</body>
+</html>
